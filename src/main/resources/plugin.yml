@@ -1,0 +1,4 @@
+name: BottleOfAllay
+version: '${project.version}'
+main: com.articreep.bottleofallay.BottleOfAllay
+api-version: '1.20'
