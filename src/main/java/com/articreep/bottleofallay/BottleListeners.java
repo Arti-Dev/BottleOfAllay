@@ -68,6 +68,7 @@ public class BottleListeners implements Listener {
         Player player = event.getPlayer();
         if (player.isSneaking()) return;
         cooldowns.add(player);
+        Bukkit.getScheduler().runTaskLater(BottleOfAllay.getInstance(), () -> cooldowns.remove(player), 5);
         if (event.getRightClicked() instanceof Allay allay) {
             PlayerInventory inv = player.getInventory();
             ItemStack handItem = inv.getItem(event.getHand());
