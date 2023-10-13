@@ -9,6 +9,7 @@ import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.memory.MemoryKey;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
@@ -62,9 +63,10 @@ public class BottleListeners implements Listener {
         if (maxAllayRecursion < 0) maxAllayRecursion = 0;
     }
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.HIGH)
     public void onAllayRightClick(PlayerInteractEntityEvent event) {
         Player player = event.getPlayer();
+        if (event.isCancelled()) return;
         if (player.isSneaking()) return;
         cooldowns.add(player);
         Bukkit.getScheduler().runTaskLater(BottleOfAllay.getInstance(), () -> cooldowns.remove(player), 5);
