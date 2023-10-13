@@ -36,7 +36,6 @@ import java.util.Set;
 
 public class BottleListeners implements Listener {
     private static final Set<Player> cooldowns = new HashSet<>();
-    // todo allow this variable to be changed by config
     private static int maxAllayRecursion = 3;
 
     /*
