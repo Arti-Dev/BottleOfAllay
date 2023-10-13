@@ -22,16 +22,16 @@ public class MainCommand implements CommandExecutor, TabCompleter {
                 sender.sendMessage(ChatColor.RED + "You do not have permission to reload the config! " +
                         ChatColor.DARK_GRAY + "(missing bottleofallay.reload)");
             }
-            return true;
+        } else {
+            sender.sendMessage("");
+            sender.sendMessage(ChatColor.AQUA + "" + ChatColor.BOLD + "BottleOfAllay");
+            sender.sendMessage(ChatColor.GRAY + "This plugin allows allays to be stored as items by bottling them.");
+            sender.sendMessage(ChatColor.GRAY + "Simply right-click an allay and it will be placed in the bottle. " +
+                    "The item the allay was holding will be preserved.");
+            sender.sendMessage(ChatColor.GRAY + "If you're really nifty, you can drink the Bottle of Allay.");
+            sender.sendMessage(ChatColor.GRAY + "Right-click a block with the Bottle of Allay to release the allay.");
+            sender.sendMessage(ChatColor.RED + "To reload config: /bottleofallay reload");
         }
-        sender.sendMessage("");
-        sender.sendMessage(ChatColor.AQUA + "" + ChatColor.BOLD + "BottleOfAllay");
-        sender.sendMessage(ChatColor.GRAY + "This plugin allows allays to be stored as items by bottling them.");
-        sender.sendMessage(ChatColor.GRAY + "Simply right-click an allay and it will be placed in the bottle. " +
-                "The item the allay was holding will be preserved.");
-        sender.sendMessage(ChatColor.GRAY + "If you're really nifty, you can drink the Bottle of Allay.");
-        sender.sendMessage(ChatColor.GRAY + "Right-click a block with the Bottle of Allay to release the allay.");
-        sender.sendMessage(ChatColor.RED + "To reload config: /bottleofallay reload");
         return true;
     }
 
