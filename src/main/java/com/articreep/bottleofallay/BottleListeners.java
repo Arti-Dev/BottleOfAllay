@@ -40,7 +40,7 @@ public class BottleListeners implements Listener {
     private static int maxAllayRecursion = 3;
 
     /*
-    - Allays can be right clicked to trap them into a glass bottle and called "Bottle of Allay"
+    - Allays can be right-clicked to trap them into a glass bottle and called "Bottle of Allay"
         - This may be canceled by shifting
     - The item they are carrying will stay in the bottle
     - Their name will be carried over, and their duplication delay, and their health
@@ -53,6 +53,15 @@ public class BottleListeners implements Listener {
     Bugs:
     - You can capture the allay while it's picking up items, and the items will be deleted
      */
+
+    public BottleListeners() {
+        loadConfig();
+    }
+
+    protected static void loadConfig() {
+        maxAllayRecursion = BottleOfAllay.getInstance().getConfig().getInt("maxAllayRecursion");
+        if (maxAllayRecursion < 0) maxAllayRecursion = 0;
+    }
 
     @EventHandler
     public void onAllayRightClick(PlayerInteractEntityEvent event) {
@@ -67,7 +76,7 @@ public class BottleListeners implements Listener {
                 try {
                     // Check what the Allay is holding and whether it has too many subitems
                     ItemStack itemHeld = allay.getEquipment().getItemInMainHand();
-                    if (listSubItems(itemHeld).size() >= maxAllayRecursion) {
+                    if (listSubItems(itemHeld).size() > maxAllayRecursion) {
                         player.sendMessage(ChatColor.RED + "Have you ever considered the amount of " +
                                 "allays and bottles you're sticking inside a single item?");
                         return;
@@ -132,10 +141,10 @@ public class BottleListeners implements Listener {
 
     }
 
-    private static NamespacedKey itemKey = new NamespacedKey(BottleOfAllay.getInstance(), "allayItem");
-    private static NamespacedKey nameKey = new NamespacedKey(BottleOfAllay.getInstance(), "allayName");
-    private static NamespacedKey dupeKey = new NamespacedKey(BottleOfAllay.getInstance(), "allayDupeCooldown");
-    private static NamespacedKey healthKey = new NamespacedKey(BottleOfAllay.getInstance(), "allayHealthKey");
+    private static final NamespacedKey itemKey = new NamespacedKey(BottleOfAllay.getInstance(), "allayItem");
+    private static final NamespacedKey nameKey = new NamespacedKey(BottleOfAllay.getInstance(), "allayName");
+    private static final NamespacedKey dupeKey = new NamespacedKey(BottleOfAllay.getInstance(), "allayDupeCooldown");
+    private static final NamespacedKey healthKey = new NamespacedKey(BottleOfAllay.getInstance(), "allayHealthKey");
 
     private ItemStack captureAllay(Allay allay) throws IOException, ClassNotFoundException {
         // Obtain data about the Allay

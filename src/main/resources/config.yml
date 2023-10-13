@@ -1,0 +1,3 @@
+# Bottles of Allays can have bottles of allays in them carrying bottles of allays... and so on.
+# This config setting limits how far this recursion can go. Minimum value is 0.
+maxAllayRecursion: 2

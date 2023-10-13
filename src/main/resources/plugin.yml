@@ -2,3 +2,7 @@ name: BottleOfAllay
 version: '${project.version}'
 main: com.articreep.bottleofallay.BottleOfAllay
 api-version: '1.20'
+commands:
+  bottleofallay:
+    description: Gives info about the plugin.
+    usage: /bottleofallay <reload>

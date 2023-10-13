@@ -2,13 +2,15 @@ package com.articreep.bottleofallay;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.command.CommandExecutor;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public final class BottleOfAllay extends JavaPlugin {
+public final class BottleOfAllay extends JavaPlugin implements CommandExecutor {
 
     private static BottleOfAllay instance;
     @Override
     public void onEnable() {
+        saveDefaultConfig();
         instance = this;
 
         if (getServer().getPluginManager().getPlugin("Pocketknife") != null) {
@@ -19,6 +21,7 @@ public final class BottleOfAllay extends JavaPlugin {
         }
 
         getServer().getPluginManager().registerEvents(new BottleListeners(), this);
+        getCommand("bottleofallay").setExecutor(new MainCommand());
         Bukkit.getConsoleSender().sendMessage(ChatColor.AQUA + "BottleOfAllay loaded");
     }
 
