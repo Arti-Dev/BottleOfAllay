@@ -167,7 +167,7 @@ public class BottleListeners implements Listener {
      * @throws IOException idk
      * @throws ClassNotFoundException idk
      */
-    private ItemStack captureAllay(Allay allay) throws IOException, ClassNotFoundException {
+    private static ItemStack captureAllay(Allay allay) throws IOException, ClassNotFoundException {
         // Obtain data about the Allay
         ItemStack itemCarrying = allay.getEquipment().getItemInMainHand();
         String allayName = allay.getCustomName();
@@ -211,7 +211,7 @@ public class BottleListeners implements Listener {
      * @throws IOException idk
      * @throws ClassNotFoundException idk
      */
-    private void releaseAllay(Player player, ItemStack bottle, Block block, BlockFace face) throws IOException, ClassNotFoundException {
+    private static void releaseAllay(Player player, ItemStack bottle, Block block, BlockFace face) throws IOException, ClassNotFoundException {
         PersistentDataContainer container = bottle.getItemMeta().getPersistentDataContainer();
         String name = container.get(nameKey, PersistentDataType.STRING);
         Long dupeCooldown = container.get(dupeKey, PersistentDataType.LONG);
